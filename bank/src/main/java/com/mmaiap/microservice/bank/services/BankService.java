@@ -21,23 +21,19 @@ public class BankService {
 
 	public List<User> getUsers() {
 		List<User> list = userFeignClient.findAll().getBody();
-			return list;
+		return list;
 		}
 	
 	public List<User> getUsersWDebt() {
 		List<User> debt = new ArrayList<>();
-		List<User> list = userFeignClient.findAll().getBody();
+		List<User> list = getUsers();
 		
 		for (User user : list) {
 			if(user.getBalance() < 0) {
 				debt.add(user);
+				userAsyncMessage.sendMessage(user);
 			}
 		}
-		
-		for (User user : debt) {
-			userAsyncMessage.sendMessage(user);
-		}
-		
 		return debt;
 	}
 }
