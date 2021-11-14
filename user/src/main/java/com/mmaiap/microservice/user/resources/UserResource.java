@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mmaiap.microservice.user.domain.User;
 import com.mmaiap.microservice.user.services.UserService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
@@ -21,6 +23,11 @@ public class UserResource {
 	public ResponseEntity<User> find(@PathVariable Integer id ){
 		User obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
+	}
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<User>> find(){
+		List<User> list = service.findAll();
+		return ResponseEntity.ok().body(list);
 	}
 
 }

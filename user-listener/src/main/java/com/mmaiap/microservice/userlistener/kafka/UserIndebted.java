@@ -6,15 +6,17 @@ import lombok.Data;
 
 @Data
 public class UserIndebted {
-	
+
+	private Long id;
 	private String name;
 	private String balance;
 	
 	public Indebted toDomain() {
-		Indebted user = new Indebted();
-		user.setName(name);
-		user.setBalance(balance);
-		return user;
+		Indebted ind = new Indebted();
+		ind.setId(id);
+		ind.setName(name);
+		ind.setBalance(balance);
+		return ind;
 	}
 
 }

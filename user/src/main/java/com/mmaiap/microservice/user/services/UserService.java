@@ -1,5 +1,6 @@
 package com.mmaiap.microservice.user.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ public class UserService {
 	public User find(Integer id) {
 		Optional<User> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
+	}
+
+	public List<User> findAll() {
+		return repo.findAll();
 	}
 	
 	

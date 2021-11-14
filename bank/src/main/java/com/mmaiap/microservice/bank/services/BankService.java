@@ -20,8 +20,7 @@ public class BankService {
 	private UserAsyncMessageImpl userAsyncMessage;
 
 	public List<User> getUsers() {
-		List<User> list = userFeignClient.findAll().getBody();
-		return list;
+		return userFeignClient.findAll().getBody();
 		}
 	
 	public List<User> getUsersWDebt() {

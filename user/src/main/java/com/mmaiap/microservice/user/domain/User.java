@@ -18,11 +18,15 @@ public class User {
 	private Integer id;
 	private String name;
 	private Integer age;
-	
-	public User(String name, Integer age) {
+	private Double balance;
+
+	public User(String name, Integer age, Double balance) {
         this.name = name;
         this.age = age;
+		this.balance = balance;
     }
-	
 
+
+	public User() {
+	}
 }
